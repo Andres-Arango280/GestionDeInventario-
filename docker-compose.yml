@@ -1,14 +1,18 @@
-# docker-compose.yml
 version: "3.8"
+
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+    container_name: gestion-backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend/datos:/app/datos
-      - ./backend/logs:/app/logs
+    restart: always
+
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+    container_name: gestion-frontend
     ports:
-      - "5173:5173"
+      - "8080:80"
+    restart: always
